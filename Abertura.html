@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trilhas | Inova Maranhão</title>
+    
+    <!-- Importação da fonte Poppins do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #2135A6;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+        }
+
+        .container {
+            max-width: 90%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        /* Estilizando o título */
+        h2 {
+            font-family: 'Poppins', sans-serif; /* Fonte personalizada */
+            font-size: 24px; /* Aumentando o tamanho */
+            font-weight: 600; /* Deixando mais destacado */
+            text-align: center;
+            width: 100%;
+            margin-top: 50px; /* Ajustando a posição */
+            margin-bottom: 25px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .btn-inscrever {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 12px 24px;
+            font-size: 18px;
+            color: white;
+            background-color: #ff6600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-inscrever:hover {
+            background-color: #cc5200;
+        }
+
+        .logo {
+            margin-top: 40px;
+        }
+
+        .logo img {
+            max-width: 200px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .page-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        footer {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            background-color: rgba(0, 0, 0, 0.2);
+            text-align: center;
+            margin-top: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+        <h2>Bem-Vindo ao Programa Trilhas!</h2>
+
+        <div class="container">
+            <img src="assets/Ilustration.png" alt="Trilhas Inova Maranhão">
+            <button class="btn-inscrever" onclick="inscrever()">Inscrever-se</button>
+
+            <div class="logo">
+                <img src="assets/logo_trilhas.png" alt="Trilhas | Inova Maranhão">
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Hedwesley Gusmão e Lucas David. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <script>
+        function inscrever() {
+            alert('Você foi redirecionado para a página de inscrição!');
+            window.location.href = 'Index.html';
+        }
+    </script>
+
+</body>
+
+</html>
