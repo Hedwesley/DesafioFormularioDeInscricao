@@ -47,4 +47,4 @@ Este projeto está sob a licença **MIT**. Sinta-se livre para usá-lo e modific
 
 ---
 
-Desenvolvido por [Hedwesley Gusmão](https://github.com/hedwesley) e [Lucas David](https://github.com/seu-usuario) 🚀
+Desenvolvido por [Hedwesley Gusmão](https://github.com/hedwesley) e [Lucas David]((https://github.com/Lucasdavid9)) 🚀
