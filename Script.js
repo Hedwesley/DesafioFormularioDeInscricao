@@ -315,4 +315,85 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         console.error("Elemento 'cidades' não encontrado no HTML.");
     }
+
+    /*
+    const submitbtn = document.querySelector('#submitbtn');
+    submitbtn.addEventListener('click', () => {
+        alert('Inscrição feita com sucesso');
+    })*/
+
+        const submitbtn = document.getElementById("submitbtn");
+
+        // Campos
+        const campos = {
+          nome: document.getElementById("nome"),
+          email: document.getElementById("email"),
+          cpf: document.getElementById("cpf"),
+          telefone: document.getElementById("telefone"),
+          nascimento: document.getElementById("nascimento"),
+          cep: document.getElementById("cep"),
+          rua: document.getElementById("rua"),
+          numero: document.getElementById("numero"),
+        };
+        
+        // Validações
+        function validarNome(nome) {
+          return /^[A-Za-zÀ-ÿ\s]{3,}$/.test(nome.trim()) && nome.trim().split(" ").length >= 2;
+        }
+        
+        function validarEmail(email) {
+          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+        }
+        
+        function validarCPF(cpf) {
+          return /^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(cpf.trim());
+        }
+        
+        function validarTelefone(tel) {
+          return /^\(\d{2}\)\s\d{5}-\d{4}$/.test(tel.trim());
+        }
+        
+        function validarNascimento(data) {
+          const nascimento = new Date(data);
+          const hoje = new Date();
+          if (isNaN(nascimento)) return false;
+          let idade = hoje.getFullYear() - nascimento.getFullYear();
+          const m = hoje.getMonth() - nascimento.getMonth();
+          if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) idade--;
+          return idade >= 18;
+        }
+        
+        function validarCEP(cep) {
+          return /^\d{5}-\d{3}$/.test(cep.trim());
+        }
+        
+        function validarRua(rua) {
+          return /^[A-Za-zÀ-ÿ\s]{3,}$/.test(rua.trim());
+        }
+        
+        function validarNumero(numero) {
+          return /^\d{1,6}$/.test(numero.trim());
+        }
+        
+        // Validação geral no clique do botão
+        submitbtn.addEventListener('click', (event) => {
+          event.preventDefault(); // impede envio do formulário
+        
+          const camposInvalidos = [];
+        
+          if (!validarNome(campos.nome.value)) camposInvalidos.push("Nome");
+          if (!validarEmail(campos.email.value)) camposInvalidos.push("E-mail");
+          if (!validarCPF(campos.cpf.value)) camposInvalidos.push("CPF");
+          if (!validarTelefone(campos.telefone.value)) camposInvalidos.push("Telefone");
+          if (!validarNascimento(campos.nascimento.value)) camposInvalidos.push("Data de nascimento");
+          if (!validarCEP(campos.cep.value)) camposInvalidos.push("CEP");
+          if (!validarRua(campos.rua.value)) camposInvalidos.push("Rua");
+          if (!validarNumero(campos.numero.value)) camposInvalidos.push("Número");
+        
+          if (camposInvalidos.length > 0) {
+            alert(`Os seguintes campos estão inválidos:\n- ${camposInvalidos.join('\n- ')}`);
+          } else {
+            alert("Inscrição feita com sucesso ✅");
+          }
+        });
 });
