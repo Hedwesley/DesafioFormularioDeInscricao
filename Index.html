@@ -121,7 +121,22 @@
                 Declaro que li e concordo com os Termos e Condições
             </label>
             
-            <button type="submit" id="submitbtn" >Fazer inscrição</button>
+            <h2>
+                Dados de login
+                <p style="font-size: 16px;">
+                    Escolha um nameID e uma senha
+                </p>
+            </h2>
+
+            <label for="usuario">ID do usuário</label>
+            <input type="text" id="usuario" required>
+            <small id="usuario-feedback" style="color: red;"></small>
+            
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" required>
+            <small id="senha-feedback" style="color: red;"></small>          
+
+            <button type="submit" id="submitbtn" >Salvar inscrição</button>
             <button type="reset">Cancelar</button>
         </form>
     </main>

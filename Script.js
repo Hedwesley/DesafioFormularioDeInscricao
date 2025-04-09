@@ -316,11 +316,35 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Elemento 'cidades' não encontrado no HTML.");
     }
 
-    /*
-    const submitbtn = document.querySelector('#submitbtn');
-    submitbtn.addEventListener('click', () => {
-        alert('Inscrição feita com sucesso');
-    })*/
+    /*Valida UserID e senha*/
+    const usuarioInput = document.getElementById("usuario");
+    const senhaInput = document.getElementById("senha");
+    const feedbackUsuario = document.getElementById("usuario-feedback");
+    const feedbackSenha = document.getElementById("senha-feedback");
+    
+    // Validação do usuário com pelo menos 4 caracteres
+    usuarioInput.addEventListener("input", () => {
+      const valor = usuarioInput.value.trim();
+    
+      if (valor.length < 4) {
+        feedbackUsuario.textContent = "O ID do usuário deve ter pelo menos 4 caracteres.";
+      } else {
+        feedbackUsuario.textContent = "";
+      }
+    });
+    
+    // Validação da senha com pelo menos 6 caracteres
+    senhaInput.addEventListener("input", () => {
+      const valor = senhaInput.value.trim();
+    
+      if (valor.length < 6) {
+        feedbackSenha.textContent = "A senha deve ter pelo menos 6 caracteres.";
+      } else {
+        feedbackSenha.textContent = "";
+      }
+    });
+
+    /*Validacao de todos os campos antes de salvar*/
 
         const submitbtn = document.getElementById("submitbtn");
 
@@ -393,7 +417,32 @@ document.addEventListener("DOMContentLoaded", function () {
           if (camposInvalidos.length > 0) {
             alert(`Os seguintes campos estão inválidos:\n- ${camposInvalidos.join('\n- ')}`);
           } else {
+            salvarInformacoes();
             alert("Inscrição feita com sucesso ✅");
           }
         });
+
+        /*Salva as informações com localStorage*/
+        function salvarInformacoes () {
+            document.getElementById('submitbtn').addEventListener('click', (e) => {
+                e.preventDefault();            
+                // coleta os dados
+                const dadosUsuario = {
+                    nome: document.getElementById("nome").value,
+                    email: document.getElementById("email").value,
+                    cpf: document.getElementById("cpf").value,
+                    telefone: document.getElementById("telefone").value,
+                    nascimento: document.getElementById("nascimento").value,
+                    cep: document.getElementById("cep").value,
+                    rua: document.getElementById("rua").value,
+                    numero: document.getElementById("numero").value,
+                    usuario: document.getElementById("usuario").value,
+                    senha: document.getElementById("senha").value,
+                };
+
+                // salva no localStorage
+                localStorage.setItem("usuarioCadastrado", JSON.stringify(dadosUsuario));
+                //alert("Usuário cadastrado com sucesso!");
+                });
+        }
 });

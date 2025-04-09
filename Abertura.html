@@ -106,28 +106,55 @@
 
     <div class="page-wrapper">
         <h2>Bem-Vindo ao Programa Trilhas!</h2>
+        <div>
+            <h2>Login</h2>
+            <label for="loginUsuario">ID do Usuário</label>
+            <input type="text" id="loginUsuario" required>
 
-        <div class="container">
-            <img src="assets/Ilustration.png" alt="Trilhas Inova Maranhão">
-            <button class="btn-inscrever" onclick="inscrever()">Inscrever-se</button>
+            <label for="loginSenha">Senha</label>
+            <input type="password" id="loginSenha" required>
 
-            <div class="logo">
-                <img src="assets/logo_trilhas.png" alt="Trilhas | Inova Maranhão">
+            <button id="loginBtn">Entrar</button>
+
+            <script>
+            document.getElementById("loginBtn").addEventListener("click", () => {
+            const user = document.getElementById("loginUsuario").value;
+            const senha = document.getElementById("loginSenha").value;
+
+            const dadosSalvos = JSON.parse(localStorage.getItem("usuarioCadastrado"));
+
+            if (dadosSalvos && user === dadosSalvos.usuario && senha === dadosSalvos.senha) {
+                alert("Login realizado com sucesso!");
+                // redireciona, se quiser
+                // window.location.href = "pagina-principal.html";
+            } else {
+                alert("Usuário ou senha incorretos.");
+            }
+            });
+            </script>
+        </div>     
+        <div>
+            <div class="container">
+                <img src="assets/Ilustration.png" alt="Trilhas Inova Maranhão">
+                <p>É sua primeira vez? Não tem problema, inscreva-se já!</p>
+                <button class="btn-inscrever" onclick="inscrever()">Inscrever-se</button>
+    
+                <div class="logo">
+                    <img src="assets/logo_trilhas.png" alt="Trilhas | Inova Maranhão">
+                </div>
             </div>
-        </div>
-
-        <footer>
-            <p>&copy; 2025 Hedwesley Gusmão e Lucas David. Todos os direitos reservados.</p>
-        </footer>
     </div>
-
+    
     <script>
         function inscrever() {
             alert('Você foi redirecionado para a página de inscrição!');
             window.location.href = 'Index.html';
         }
-    </script>
+        </script>
 
 </body>
+<footer>
+    <p>&copy; 2025 Hedwesley Gusmão e Lucas David. Todos os direitos reservados.</p>
+</footer>
 
 </html>
