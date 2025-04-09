@@ -38,12 +38,6 @@
             flex-grow: 1;
         }
 
-        .login {
-            display: flex;
-            justify-content: center;
-            gap: 34px;
-        }
-
         /* Estilizando o título */
         h2 {
             font-family: 'Poppins', sans-serif; /* Fonte personalizada */
@@ -110,46 +104,14 @@
 
 <body>
     <main>
+        <h2>Bem-Vindo ao Programa Trilhas!</h2>
+        <h3>Você está logado!</h3>
         <div class="page-wrapper">
-            <h2>Bem-Vindo ao Programa Trilhas!</h2>
-            <h2>Login</h2>
-            <section >
-                <div class="login">
-                    <div>
-                        <label for="loginUsuario">ID do Usuário</label>
-                        <input type="text" id="loginUsuario" required>
-                    </div>  
-                    <div>
-                        <label for="loginSenha">Senha</label>
-                        <input type="password" id="loginSenha" required>
-                    </div>             
-                </div>
-            
-                <button class="btn-inscrever" id="loginBtn">Entrar</button>
-            
-                <script>
-                document.getElementById("loginBtn").addEventListener("click", () => {
-                const user = document.getElementById("loginUsuario").value;
-                const senha = document.getElementById("loginSenha").value;
-    
-                const dadosSalvos = JSON.parse(localStorage.getItem("usuarioCadastrado"));
-    
-                if (dadosSalvos && user === dadosSalvos.usuario && senha === dadosSalvos.senha) {
-                    alert("Login realizado com sucesso!");
-                    // redireciona
-                    window.location.href = "menu.html";
-                } else {
-                    alert("Usuário ou senha incorretos.");
-                }
-                });
-                </script>
-            </section>     
-            
             <div>
                 <div class="container">
-                    <img src="assets/Ilustration.png" alt="Trilhas Inova Maranhão">
-                    <p>É sua primeira vez? Não tem problema, inscreva-se já!</p>
-                    <button class="btn-inscrever" id="inscrever_btn" onclick="inscrever()">Inscreva-se</button>
+                    <!-- <img src="assets/Ilustration.png" alt="Trilhas Inova Maranhão"> -->
+                    <p>Parabéns, você conseguiu escrever os dados direitinho!</p>
+                    <button class="btn-inscrever" onclick="home()">Home</button>
         
                     <div class="logo">
                         <img src="assets/logo_trilhas.png" alt="Trilhas | Inova Maranhão">
@@ -157,9 +119,8 @@
                 </div>
         </div>
         <script>
-            function inscrever() {
-                alert('Você foi redirecionado para a página de inscrição!');
-                window.location.href = 'Index.html';
+            function home() {
+                window.location.href = 'abertura.html';
             }
         </script>
     </main>    
