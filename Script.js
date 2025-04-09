@@ -1,46 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("inscricaoForm");
 
-    /*if (form) {
-        form.addEventListener("submit", function (event) {
-            event.preventDefault();
-
-            const nome = document.getElementById("nome").value.trim();
-            const email = document.getElementById("email").value.trim();
-            const cpf = document.getElementById("cpf").value.trim();
-            const telefone = document.getElementById("telefone").value.trim();
-            const termos = document.getElementById("termos").checked;
-
-            if (nome === "" || email === "" || cpf === "" || telefone === "") {
-                alert("Por favor, preencha todos os campos obrigatórios.");
-                return;
-            }
-
-            if (!validarEmail(email)) {
-                alert("Insira um e-mail válido.");
-                return;
-            }
-
-            if (!validarCPF(cpf)) {
-                alert("CPF inválido. Insira um CPF válido no formato XXX.XXX.XXX-XX.");
-                return;
-            }
-
-            if (!validarTelefone(telefone)) {
-                alert("Número de telefone inválido. Use o formato (XX) XXXXX-XXXX.");
-                return;
-            }
-
-            if (!termos) {
-                alert("Você deve aceitar os Termos e Condições para continuar.");
-                return;
-            }
-
-            alert("Inscrição realizada com sucesso!");
-            form.submit();
-        });
-    }
-*/
     /*Validação de Nome*/
     const nomeInput = document.getElementById("nome");
     const erroNome = document.getElementById("erroNome");
@@ -346,103 +306,119 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /*Validacao de todos os campos antes de salvar*/
 
-        const submitbtn = document.getElementById("submitbtn");
+    const submitbtn = document.getElementById("submitbtn");
 
-        // Campos
-        const campos = {
-          nome: document.getElementById("nome"),
-          email: document.getElementById("email"),
-          cpf: document.getElementById("cpf"),
-          telefone: document.getElementById("telefone"),
-          nascimento: document.getElementById("nascimento"),
-          cep: document.getElementById("cep"),
-          rua: document.getElementById("rua"),
-          numero: document.getElementById("numero"),
-        };
-        
-        // Validações
-        function validarNome(nome) {
-          return /^[A-Za-zÀ-ÿ\s]{3,}$/.test(nome.trim()) && nome.trim().split(" ").length >= 2;
-        }
-        
-        function validarEmail(email) {
-          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
-        }
-        
-        function validarCPF(cpf) {
-          return /^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(cpf.trim());
-        }
-        
-        function validarTelefone(tel) {
-          return /^\(\d{2}\)\s\d{5}-\d{4}$/.test(tel.trim());
-        }
-        
-        function validarNascimento(data) {
-          const nascimento = new Date(data);
-          const hoje = new Date();
-          if (isNaN(nascimento)) return false;
-          let idade = hoje.getFullYear() - nascimento.getFullYear();
-          const m = hoje.getMonth() - nascimento.getMonth();
-          if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) idade--;
-          return idade >= 18;
-        }
-        
-        function validarCEP(cep) {
-          return /^\d{5}-\d{3}$/.test(cep.trim());
-        }
-        
-        function validarRua(rua) {
-          return /^[A-Za-zÀ-ÿ\s]{3,}$/.test(rua.trim());
-        }
-        
-        function validarNumero(numero) {
-          return /^\d{1,6}$/.test(numero.trim());
-        }
-        
-        // Validação geral no clique do botão
-        submitbtn.addEventListener('click', (event) => {
-          event.preventDefault(); // impede envio do formulário
-        
-          const camposInvalidos = [];
-        
-          if (!validarNome(campos.nome.value)) camposInvalidos.push("Nome");
-          if (!validarEmail(campos.email.value)) camposInvalidos.push("E-mail");
-          if (!validarCPF(campos.cpf.value)) camposInvalidos.push("CPF");
-          if (!validarTelefone(campos.telefone.value)) camposInvalidos.push("Telefone");
-          if (!validarNascimento(campos.nascimento.value)) camposInvalidos.push("Data de nascimento");
-          if (!validarCEP(campos.cep.value)) camposInvalidos.push("CEP");
-          if (!validarRua(campos.rua.value)) camposInvalidos.push("Rua");
-          if (!validarNumero(campos.numero.value)) camposInvalidos.push("Número");
-        
-          if (camposInvalidos.length > 0) {
-            alert(`Os seguintes campos estão inválidos:\n- ${camposInvalidos.join('\n- ')}`);
-          } else {
-            salvarInformacoes();
+    // Campos
+    const campos = {
+      nome: document.getElementById("nome"),
+      email: document.getElementById("email"),
+      cpf: document.getElementById("cpf"),
+      telefone: document.getElementById("telefone"),
+      nascimento: document.getElementById("nascimento"),
+      cep: document.getElementById("cep"),
+      rua: document.getElementById("rua"),
+      numero: document.getElementById("numero"),
+    };
+    
+    // Validações
+    function validarNome(nome) {
+      return /^[A-Za-zÀ-ÿ\s]{3,}$/.test(nome.trim()) && nome.trim().split(" ").length >= 2;
+    }
+    
+    function validarEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+    }
+    
+    function validarCPF(cpf) {
+      return /^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(cpf.trim());
+    }
+    
+    function validarTelefone(tel) {
+      return /^\(\d{2}\)\s\d{5}-\d{4}$/.test(tel.trim());
+    }
+    
+    function validarNascimento(data) {
+      const nascimento = new Date(data);
+      const hoje = new Date();
+      if (isNaN(nascimento)) return false;
+      let idade = hoje.getFullYear() - nascimento.getFullYear();
+      const m = hoje.getMonth() - nascimento.getMonth();
+      if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) idade--;
+      return idade >= 18;
+    }
+    
+    function validarCEP(cep) {
+      return /^\d{5}-\d{3}$/.test(cep.trim());
+    }
+    
+    function validarRua(rua) {
+      return /^[A-Za-zÀ-ÿ\s]{3,}$/.test(rua.trim());
+    }
+    
+    function validarNumero(numero) {
+      return /^\d{1,6}$/.test(numero.trim());
+    }
+    
+    // Validação geral no clique do botão
+    submitbtn.addEventListener('click', (event) => {
+      event.preventDefault(); // impede envio do formulário
+    
+      const camposInvalidos = [];
+    
+      if (!validarNome(campos.nome.value)) camposInvalidos.push("Nome");
+      if (!validarEmail(campos.email.value)) camposInvalidos.push("E-mail");
+      if (!validarCPF(campos.cpf.value)) camposInvalidos.push("CPF");
+      if (!validarTelefone(campos.telefone.value)) camposInvalidos.push("Telefone");
+      if (!validarNascimento(campos.nascimento.value)) camposInvalidos.push("Data de nascimento");
+      if (!validarCEP(campos.cep.value)) camposInvalidos.push("CEP");
+      if (!validarRua(campos.rua.value)) camposInvalidos.push("Rua");
+      if (!validarNumero(campos.numero.value)) camposInvalidos.push("Número");
+    
+      if (camposInvalidos.length > 0) {
+        alert(`Os seguintes campos estão inválidos:\n- ${camposInvalidos.join('\n- ')}`);
+      } else {
+        salvarInformacoes();
+        telaMenu();
+      }
+    });
+
+    /*Salva as informações com localStorage*/
+    function salvarInformacoes () {
+        // document.getElementById('submitbtn').addEventListener('click', (e) => {
+        //     e.preventDefault();            
+            // coleta os dados
+            const dadosUsuario = {
+                nome: document.getElementById("nome").value,
+                email: document.getElementById("email").value,
+                cpf: document.getElementById("cpf").value,
+                telefone: document.getElementById("telefone").value,
+                nascimento: document.getElementById("nascimento").value,
+                cep: document.getElementById("cep").value,
+                rua: document.getElementById("rua").value,
+                numero: document.getElementById("numero").value,
+                usuario: document.getElementById("usuario").value,
+                senha: document.getElementById("senha").value,
+            };
+
+            // salva no localStorage
+            localStorage.setItem("usuarioCadastrado", JSON.stringify(dadosUsuario));
             alert("Inscrição feita com sucesso ✅");
-          }
-        });
+            // alert("Usuário cadastrado com sucesso!");
+            }
+          // )}
 
-        /*Salva as informações com localStorage*/
-        function salvarInformacoes () {
-            document.getElementById('submitbtn').addEventListener('click', (e) => {
-                e.preventDefault();            
-                // coleta os dados
-                const dadosUsuario = {
-                    nome: document.getElementById("nome").value,
-                    email: document.getElementById("email").value,
-                    cpf: document.getElementById("cpf").value,
-                    telefone: document.getElementById("telefone").value,
-                    nascimento: document.getElementById("nascimento").value,
-                    cep: document.getElementById("cep").value,
-                    rua: document.getElementById("rua").value,
-                    numero: document.getElementById("numero").value,
-                    usuario: document.getElementById("usuario").value,
-                    senha: document.getElementById("senha").value,
-                };
-
-                // salva no localStorage
-                localStorage.setItem("usuarioCadastrado", JSON.stringify(dadosUsuario));
-                //alert("Usuário cadastrado com sucesso!");
-                });
-        }
+    const inscrever = document.querySelector('#inscrever_btn');
+    const cancelarbtn = document.querySelector('#cancelarbtn');
+   
+    function telaDeInscricao() {
+      window.location.href = 'Index.html';      
+    }
+    
+    function telaInicial() {
+      window.location.href = 'Abertura.html';
+    }
+    
+    function telaMenu() {
+      window.location.href = 'menu.html';
+    }
 });
